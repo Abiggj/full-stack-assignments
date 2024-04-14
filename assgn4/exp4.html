@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with Password Activation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm()">
+        <h1>Form Validation with Password Activation</h1>
+        <div>
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" name="mobile" id="mobile" placeholder="Enter Your Mobile Number">
+            <div id="mobileError" class="error"></div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email Id">
+            <div id="emailError" class="error"></div>
+        </div>
+        <div>
+            <button type="button" onclick="activate()">Activate Textbox</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        var mobileInput = document.getElementById("mobile");
+        var emailInput = document.getElementById("email");
+        mobileInput.disabled = true;
+        emailInput.disabled = true;
+
+        function activate() {
+            var password = prompt("Please enter your password");
+            if (password !== null && password !== "" && password === "aniket") {
+                mobileInput.disabled = false;
+                emailInput.disabled = false;
+            } else {
+                alert("Invalid password. Please try again.");
+            }
+        };
+
+        function validateForm() {
+            var mobile = document.forms["myForm"]["mobile"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var mobileError = document.getElementById("mobileError");
+            var emailError = document.getElementById("emailError");
+
+            // Mobile number validation
+            var mobileRegex = /^[0-9]{10}$/;
+            if (!mobile.match(mobileRegex)) {
+                mobileError.innerHTML = "Invalid mobile number";
+                return false;
+            } else {
+                mobileError.innerHTML = "";
+            }
+
+            // Email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                emailError.innerHTML = "Invalid email address";
+                return false;
+            } else {
+                emailError.innerHTML = "";
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

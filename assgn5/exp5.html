@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: #ff0000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <h2>Registration Form</h2>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+            <div id="firstNameError" class="error"></div>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+            <div id="lastNameError" class="error"></div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div id="emailError" class="error"></div>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <div id="passwordError" class="error"></div>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value.trim();
+            var lastName = document.getElementById('lastName').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value.trim();
+
+            var firstNameError = document.getElementById('firstNameError');
+            var lastNameError = document.getElementById('lastNameError');
+            var emailError = document.getElementById('emailError');
+            var passwordError = document.getElementById('passwordError');
+
+            // Resetting previous errors
+            firstNameError.innerHTML = "";
+            lastNameError.innerHTML = "";
+            emailError.innerHTML = "";
+            passwordError.innerHTML = "";
+
+            var isValid = true;
+
+            // First Name Validation
+            if (firstName === "") {
+                firstNameError.innerHTML = "First name is required";
+                isValid = false;
+            }
+
+            // Last Name Validation
+            if (lastName === "") {
+                lastNameError.innerHTML = "Last name is required";
+                isValid = false;
+            }
+
+            // Email Validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                emailError.innerHTML = "Invalid email address";
+                isValid = false;
+            }
+
+            // Password Validation
+            if (password.length < 8) {
+                passwordError.innerHTML = "Password must be at least 8 characters long";
+                isValid = false;
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Experiment 2</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            form{
+                max-width: 600px;
+                width: 100%;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                border-radius: 8px;
+            }
+            label{
+                margin-top: 8px;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 2px;
+            }
+            input, select{
+                width: 100%;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-sizing: 'border-box';
+            }
+            .gender{
+                display: flex;
+
+            }
+            input[type="submit"]{
+                background-color: green;
+                color: white;
+            }
+            input[type="submit"]:hover{
+                background-color:rgb(118, 241, 42);
+            }
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <label for="">First Name:</label>
+            <input type="text" name="T1">
+            <label for="">Last Name:</label>
+            <input type="text" name="T2">
+            <label for="">Email Address:</label>
+            <input type="text" name="T3">
+            <label for="">Password:</label>
+            <input type="password" name="T4">
+            <label for="">Confirm Password:</label>
+            <input type="password" name="T5">
+            <label for="">Date of Birth:</label>
+            <input type="date" name="T6">
+            <label for="">Gender</label>
+            <div class="gender">
+                <input type="radio" name="" id=""> Male
+                <input type="radio" name="" id=""> Female
+            </div>
+            <label for="">Country</label>
+            <select name="Country" id="">
+                <option value="">India</option>
+                <option value="">USA</option>
+                <option value="">UK</option>
+            </select>
+            <label for="">Profile picture:</label>
+            <input type="file" accept="image/*">
+            <input type="submit" value="Register">
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html></html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Card Effect</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .card-container{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .card{
+                width: 300px;
+                height: 400px;
+                perspective: 1000px;
+                margin: 20px;
+            }
+            .card-inner{
+                width: 100%;
+                height: 100%;
+                transition: transform 0.5s;
+                transform-style: preserve-3d;
+            }
+            .card:hover .card-inner{
+                transform: rotateY(180deg);
+            }
+            .card-front, .card-back{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                backface-visibility: hidden;
+            }
+            .card-back{
+                transform: rotateY(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="first.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h1>Rajgad Fort</h1>
+                                <h5 class="card-title">Rajgad is a Hill region fort situated in the Pune district of Maharashtra, India.</h5>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <img src="second.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h1>Shivaji Maharaj</h1>
+                                <h5 class="card-title">The fort was the first capital of the Maratha Empire under the rule of Chhatrapati Shivaji</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
